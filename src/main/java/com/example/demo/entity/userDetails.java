@@ -25,4 +25,5 @@ public class userDetails {
     private String password;
     @DBRef
     private List<postDetails> PostDetails = new ArrayList<>();
+    private List<String> roles;
 }

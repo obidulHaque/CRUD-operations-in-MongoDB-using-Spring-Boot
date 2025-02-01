@@ -19,19 +19,19 @@ public class userService {
     public List<userDetails> getAllUser(){
         return  UserRepository.findAll();
     }
-    public userDetails createUser( userDetails UserDetails){
-        UserDetails.setPassword(passwordEncoder.encode(UserDetails.getPassword()));
-        return UserRepository.save(UserDetails);
-    }
-    public userDetails updateUser(String userName, userDetails updateUserInfo){
-        userDetails UserInfo= UserRepository.findByUserName(userName);
-        if (UserInfo != null){
-            UserInfo.setUserName(updateUserInfo.getUserName());
-            UserInfo.setPassword(updateUserInfo.getPassword());
-            UserRepository.save(UserInfo);
+//    public userDetails createUser( userDetails UserDetails){
+//        UserDetails.setPassword(passwordEncoder.encode(UserDetails.getPassword()));
+//        return UserRepository.save(UserDetails);
+//    }
+    public userDetails updateUser(userDetails ExistUser, userDetails updateUserInfo){
+
+        if (ExistUser != null){
+            ExistUser.setUserName(updateUserInfo.getUserName());
+            ExistUser.setPassword(passwordEncoder.encode(updateUserInfo.getPassword()));
+            UserRepository.save(ExistUser);
         }
 
-        return UserInfo;
+        return ExistUser;
     }
 //    public Boolean deleteUser(String username){
 //        UserRepository.delete
